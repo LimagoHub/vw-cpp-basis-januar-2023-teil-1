@@ -20,17 +20,17 @@ public:
 		return name;
 	}
 
-	inline void set_name(const std::string& name)
+	inline void set_name(const std::string &name)
 	{
 		this->name = name;
 	}
 
 	void fressen();
 
-	friend std::ostream& operator<<(std::ostream& os, const Schwein& obj)
+	friend std::ostream& operator<<(std::ostream& os, const Schwein& obj) 
 	{
 		return os
-			<< "name: " << obj.name
+			<< "name: " << obj.get_name()
 			<< " gewicht: " << obj.gewicht;
 	}
 };
