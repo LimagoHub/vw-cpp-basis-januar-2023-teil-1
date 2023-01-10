@@ -1,19 +1,26 @@
 #pragma once
 #include <ostream>
 #include <string>
-
+#include <stdexcept>
 class Schwein
 {
+private:
 	std::string name;
 	int gewicht;
+	static int counter;
 
 public:	
-	// Konstruktor
+	// Konstruktor (Initialisiert)
 	Schwein();
 
-	// Destruktor
+	// Destruktor (Clean up)
 	~Schwein();
 
+	static int get_counter()
+	{
+		return counter;
+	}
+	
 
 	inline std::string get_name() const
 	{
@@ -22,6 +29,8 @@ public:
 
 	inline void set_name(const std::string &name)
 	{
+		if (name == "Elsa")
+			throw std::invalid_argument("Name is not valid");
 		this->name = name;
 	}
 
