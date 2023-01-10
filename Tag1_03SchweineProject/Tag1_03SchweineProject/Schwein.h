@@ -19,6 +19,21 @@ private:
 public:
 
 
+	// Preincrement
+	Schwein operator ++()
+	{
+		fressen();
+		return *this;
+	}
+
+	// Postincrement
+	Schwein operator ++(int dummy)
+	{
+		Schwein oldValue = *this;
+		fressen();
+		return oldValue;
+	}
+
 	int get_gewicht() const
 	{
 		return gewicht;

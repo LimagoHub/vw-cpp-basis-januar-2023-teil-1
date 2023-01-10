@@ -1,5 +1,8 @@
 #include "Schwein.h"
 #include <iostream>
+
+
+
 Schwein::Schwein(std::string name)
 {
 	set_name(name);

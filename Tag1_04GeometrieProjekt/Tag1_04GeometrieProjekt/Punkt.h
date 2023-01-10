@@ -1,8 +1,14 @@
 #pragma once
 #include <string>
+#include <fstream>
+#include <ostream>
+
 class Punkt
 {
+
+	
 private:
+	
 	const double MAX{ 10.0 };
 	double x;
 	double y;
@@ -23,6 +29,14 @@ private:
 public:
 	Punkt(double x = 0.0, double y = 0.0);
 
+	Punkt& operator *= (double scalar)
+	{
+		set_x(get_x() * scalar);
+		set_y(get_y() * scalar);
+		return *this;
+	}
+
+	
 	double get_x() const
 	{
 		return this->x;
@@ -43,6 +57,26 @@ public:
 	inline std::string to_string()
 	{
 		return "X=" + std::to_string(get_x()) + ", Y=" + std::to_string(get_y());
+	}
+
+
+	friend std::ostream& operator << (std::ostream& os, const Punkt& punkt)
+	{
+		os << "Punkt: X=" << punkt.get_x() << ", Y=" << punkt.get_y();
+		return os;
+	}
+
+
+	//friend std::ostream& operator<<(std::ostream& os, const Punkt& obj)
+	//{
+	//	return os
+	//		<< " x: " << obj.x
+	//		<< " y: " << obj.y;
+	//}
+
+	friend Punkt operator+(const Punkt& a, const Punkt& b)
+	{
+		return Punkt{ a.get_x() + b.get_x(), a.get_y() + b.get_y() };
 	}
 };
 

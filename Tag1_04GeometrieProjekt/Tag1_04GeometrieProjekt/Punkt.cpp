@@ -4,6 +4,7 @@ Punkt::Punkt(double x, double y)
 {
 	set_x(x);
 	set_y(y);
+
 }
 
 
@@ -26,3 +27,4 @@ void Punkt::unten()
 {
 	set_y(get_y() - 1);
 }
+

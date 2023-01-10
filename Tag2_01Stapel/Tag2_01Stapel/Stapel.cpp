@@ -1,31 +1,32 @@
 #include <iostream>
 #include "Stapel.h"
 
-Stapel::Stapel()
+Stapel::Stapel():index{0}
 {
-	std::cout << "CTOR" << std::endl;
+	// NOP
 }
 
 void Stapel::push(int value)
 {
-	std::cout << "Push" << std::endl;
+	if (is_full()) return;
+	data[index++] = value;
 }
 
 int Stapel::pop()
 {
-	std::cout << "pop" << std::endl;
-	return 0;
+	if (is_empty()) return 0;
+	return data[--index];
 }
 
 bool Stapel::is_empty()
 {
-	std::cout << "is_empty" << std::endl;
-	return true;
+	
+	return index == 0;
 }
 
 bool Stapel::is_full()
 {
-	std::cout << "is_full" << std::endl;
-	return true;
+	
+	return index == sizeof(data)/sizeof(int);
 }
 
