@@ -9,9 +9,23 @@ private:
 	int gewicht;
 	static int counter;
 
-public:	
+	void set_gewicht(const int gewicht)
+	{
+		if(gewicht < 10)
+			throw std::invalid_argument("Gewicht ist ungeltig");
+		this->gewicht = gewicht;
+	}
+
+public:
+
+
+	int get_gewicht() const
+	{
+		return gewicht;
+	}
+
 	// Konstruktor (Initialisiert)
-	Schwein();
+	Schwein(std::string name = "Nobody");
 
 	// Destruktor (Clean up)
 	~Schwein();

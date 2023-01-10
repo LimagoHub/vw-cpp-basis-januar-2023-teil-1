@@ -1,12 +1,15 @@
 #include "Punkt.h"
 
-Punkt::Punkt():x(0),y(0)
+Punkt::Punkt(double x, double y)
 {
+	set_x(x);
+	set_y(y);
 }
 
-void Punkt::rechts()
+
+void Punkt::rechts(double offset)
 {
-	set_x(get_x() + 1);
+	set_x(get_x() + offset);
 }
 
 void Punkt::links()

@@ -3,13 +3,15 @@
 class Punkt
 {
 private:
-	const double MAX = 10.0;
+	const double MAX{ 10.0 };
 	double x;
 	double y;
 
-	void set_x(const double x)
+	void set_x(double x)
 	{
-		if (x > MAX || x < -MAX) return;
+		if (x > MAX ) x = MAX;
+		if (x < -MAX) x = -MAX;
+
 		this->x = x;
 	}
 	void set_y(const double y)
@@ -19,7 +21,7 @@ private:
 	}
 
 public:
-	Punkt();
+	Punkt(double x = 0.0, double y = 0.0);
 
 	double get_x() const
 	{
@@ -32,7 +34,8 @@ public:
 		return this->y;
 	}
 
-	void rechts();
+	
+	void rechts(double offset = 1);
 	void links();
 	void oben();
 	void unten();

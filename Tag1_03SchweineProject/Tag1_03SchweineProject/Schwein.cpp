@@ -1,9 +1,9 @@
 #include "Schwein.h"
 #include <iostream>
-Schwein::Schwein()
+Schwein::Schwein(std::string name)
 {
-	name = "Nobody";
-	gewicht = 10;
+	set_name(name);
+	set_gewicht(10);
 	Schwein::counter++;
 }
 
@@ -15,6 +15,6 @@ Schwein::~Schwein()
 
 void Schwein::fressen()
 {
-	gewicht++;
+	set_gewicht(get_gewicht() + 1);
 }
 int Schwein::counter = 0;
