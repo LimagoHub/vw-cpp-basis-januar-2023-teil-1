@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iostream>
 #include <fstream>
 #include <ostream>
 
@@ -29,7 +30,10 @@ protected:
 
 public:
 	Punkt(double x = 0.0, double y = 0.0);
-
+	virtual ~Punkt()
+	{
+		std::cout << "DTOR Punkt" << this << std::endl;
+	}
 	Punkt& operator *= (double scalar) 
 	{
 		set_x(get_x() * scalar);
@@ -55,15 +59,15 @@ public:
 	void oben();
 	void unten();
 
-	std::string to_string() const
+	virtual std::string to_string() const
 	{
 		return "X=" + std::to_string(get_x()) + ", Y=" + std::to_string(get_y());
 	}
 
 
-	friend std::ostream& operator << (std::ostream& os, const Punkt& punkt) 
+	friend  std::ostream& operator << (std::ostream& os, const Punkt& punkt) 
 	{
-		os << "X=" << punkt.get_x() << ", Y=" << punkt.get_y();
+		os << punkt.to_string();
 		return os;
 	}
 

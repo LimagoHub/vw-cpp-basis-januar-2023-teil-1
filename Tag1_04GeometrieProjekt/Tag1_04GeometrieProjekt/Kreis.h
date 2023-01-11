@@ -29,7 +29,15 @@ public:
 
 	}
 
+	~Kreis() override
+	{
+		std::cout << "DTOR Kreis" << this << std::endl;
+	}
 
+	std::string to_string() const override
+	{
+		return Punkt::to_string() + ", Radius=" + std::to_string(  get_radius());
+	}
 
 	double get_radius() const
 	{
@@ -41,9 +49,9 @@ public:
 		this->radius = radius;
 	}
 
-	friend std::ostream& operator<<(std::ostream &os, const Kreis& kreis)
+	friend std::ostream& operator<<(std::ostream &os, const Kreis& kreis) 
 	{
-		return os << kreis.to_string() << ", Radius=" << kreis.get_radius();
+		return os << kreis.to_string();
 	}
 };
 
