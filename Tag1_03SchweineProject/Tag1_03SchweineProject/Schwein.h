@@ -39,8 +39,13 @@ public:
 		return gewicht;
 	}
 
+	// wegen Goldener Regel....
+	Schwein& operator=(const Schwein& other) = default;
+
 	// Konstruktor (Initialisiert)
 	Schwein(std::string name = "Nobody");
+
+	Schwein(const Schwein& other);
 
 	// Destruktor (Clean up)
 	~Schwein();
@@ -64,6 +69,17 @@ public:
 	}
 
 	void fressen();
+
+	friend bool operator==(const Schwein& lhs, const Schwein& rhs)
+	{
+		return lhs.name == rhs.name
+			&& lhs.gewicht == rhs.gewicht;
+	}
+
+	friend bool operator!=(const Schwein& lhs, const Schwein& rhs)
+	{
+		return !(lhs == rhs);
+	}
 
 	friend std::ostream& operator<<(std::ostream& os, const Schwein& obj) 
 	{

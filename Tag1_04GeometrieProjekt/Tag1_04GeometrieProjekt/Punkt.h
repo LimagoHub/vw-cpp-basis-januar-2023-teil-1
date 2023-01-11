@@ -13,6 +13,7 @@ private:
 	double x;
 	double y;
 
+protected:
 	void set_x(double x)
 	{
 		if (x > MAX ) x = MAX;
@@ -29,7 +30,7 @@ private:
 public:
 	Punkt(double x = 0.0, double y = 0.0);
 
-	Punkt& operator *= (double scalar)
+	Punkt& operator *= (double scalar) 
 	{
 		set_x(get_x() * scalar);
 		set_y(get_y() * scalar);
@@ -54,15 +55,15 @@ public:
 	void oben();
 	void unten();
 
-	inline std::string to_string()
+	std::string to_string() const
 	{
 		return "X=" + std::to_string(get_x()) + ", Y=" + std::to_string(get_y());
 	}
 
 
-	friend std::ostream& operator << (std::ostream& os, const Punkt& punkt)
+	friend std::ostream& operator << (std::ostream& os, const Punkt& punkt) 
 	{
-		os << "Punkt: X=" << punkt.get_x() << ", Y=" << punkt.get_y();
+		os << "X=" << punkt.get_x() << ", Y=" << punkt.get_y();
 		return os;
 	}
 

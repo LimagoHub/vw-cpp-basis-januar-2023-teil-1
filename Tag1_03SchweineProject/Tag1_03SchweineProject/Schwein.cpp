@@ -10,6 +10,13 @@ Schwein::Schwein(std::string name)
 	Schwein::counter++;
 }
 
+Schwein::Schwein(const Schwein& other)
+{
+	set_name(other.get_name());
+	set_gewicht(other.get_gewicht());
+	Schwein::counter++;
+}
+
 Schwein::~Schwein()
 {
 	std::cout << "Quiiiieeeek!" << std::endl;

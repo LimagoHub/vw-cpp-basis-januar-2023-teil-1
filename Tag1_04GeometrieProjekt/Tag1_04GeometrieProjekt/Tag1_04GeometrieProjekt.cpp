@@ -2,15 +2,11 @@
 //
 
 #include <iostream>
-#include "Punkt.h"
+#include "Kreis.h"
 int main()
 {
-    Punkt p{3.0, -7.0};
-	Punkt q{ 1,1 };
-
-
-	Punkt x = p + q;
-
-	std::cout << x << std::endl;
+	Kreis k;
+	k.set_radius(10);
+	std::cout << k << std::endl;
 }
 

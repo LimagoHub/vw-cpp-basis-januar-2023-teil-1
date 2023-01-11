@@ -2,11 +2,14 @@
 //
 
 #include <iostream>
-#include <stdexcept>
+#include "MyArray.h"
+
 int main()
 {
-	
+	MyArray<int, 10> myArray;
 
-	throw std::out_of_range{ "Upps" };
+	myArray[5] = 10;
+
+	
 }
 

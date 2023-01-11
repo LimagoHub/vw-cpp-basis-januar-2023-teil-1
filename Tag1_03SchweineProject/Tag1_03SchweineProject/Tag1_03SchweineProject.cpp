@@ -10,14 +10,17 @@ int main()
 	
 	Schwein piggy; // Piggy ist die Instanz == Object
 
+	std::cout << Schwein::get_counter() << std::endl;
 
-	
-	piggy.set_name("Miss Piggy");
+	// Schwein babe =  piggy ; ACHTUNG keine Zuweisung sondern CopyCtor
+	Schwein babe{ piggy };
+	std::cout << Schwein::get_counter() << std::endl;
 
-	Schwein babe = piggy++;
 
-	std::cout << babe << std::endl;
-	
+	// Zuweisung
+	Schwein freddy;
+	freddy = piggy;
+	std::cout << Schwein::get_counter() << std::endl;
 }
 
 

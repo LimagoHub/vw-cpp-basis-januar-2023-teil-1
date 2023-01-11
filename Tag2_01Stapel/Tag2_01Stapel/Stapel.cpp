@@ -1,9 +1,15 @@
 #include <iostream>
 #include "Stapel.h"
 
-Stapel::Stapel():index{0}
+Stapel::Stapel(size_t size) :data{ new int[size] }, size{ size }, index{ 0 }
 {
 	// NOP
+}
+
+Stapel::~Stapel()
+{
+	delete[] data;
+	
 }
 
 void Stapel::push(int value)
@@ -27,6 +33,6 @@ bool Stapel::is_empty()
 bool Stapel::is_full()
 {
 	
-	return index == sizeof(data)/sizeof(int);
+	return index == size;
 }
 

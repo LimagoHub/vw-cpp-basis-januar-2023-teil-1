@@ -6,7 +6,12 @@
 
 int main()
 {
-    Stapel myStapel;
+    size_t my_size = 10;
+    Stapel myStapel{ my_size }; // Aufruf des numerischen CTOR
+
+    Stapel zwei= myStapel ;
+
+    //zwei = myStapel;
 
     for (int i = 0; i < 10; ++i)
     {
@@ -17,7 +22,9 @@ int main()
 
     while (!myStapel.is_empty())
         std::cout << myStapel.pop() << std::endl;
-	
+
+
+
 }
 
 
