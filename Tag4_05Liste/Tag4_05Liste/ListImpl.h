@@ -38,6 +38,13 @@ namespace vw
 				}
 				akt = neu;
 			}
+
+
+			bool update(T newValue) const override
+			{
+				return false;
+			}
+
 			T get() const override
 			{
 				return T{};

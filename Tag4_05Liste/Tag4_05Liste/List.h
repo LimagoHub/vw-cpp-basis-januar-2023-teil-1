@@ -25,6 +25,7 @@ namespace vw
 			/// 
 			/// </summary>
 			/// <returns></returns>
+			virtual bool update(T newValue) const = 0;
 			virtual T get() const = 0;
 			virtual bool remove() = 0;
 			

@@ -2,11 +2,17 @@
 //
 
 #include <iostream>
+
+#include "Client.h"
 #include "ListImpl.h"
 
 using namespace  vw::collections;
 int main()
 {
-    ListImpl<int> liste;
+	ListImpl<Schwein*> liste;
+	Client c{ liste };
+	c.run();
+
+	return 0;
  }
 
