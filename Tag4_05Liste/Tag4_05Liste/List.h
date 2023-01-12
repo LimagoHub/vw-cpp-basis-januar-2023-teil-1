@@ -37,9 +37,9 @@ namespace vw
 			virtual bool move_last() = 0;
 
 			// Status
-			virtual bool is_empty() = 0;
-			virtual bool is_end_of_list() = 0; // wenn cursor AUF dem letzeten Element steht ODER die Liste leer ist
-			virtual bool is_begin_of_list() = 0; // wenn cursor AUF dem letzeten Element steht ODER die Liste leer ist
+			virtual bool is_empty() const = 0;
+			virtual bool is_end_of_list() const = 0; // wenn cursor AUF dem letzeten Element steht ODER die Liste leer ist
+			virtual bool is_begin_of_list() const = 0; // wenn cursor AUF dem letzeten Element steht ODER die Liste leer ist
 			
 		};
 	}

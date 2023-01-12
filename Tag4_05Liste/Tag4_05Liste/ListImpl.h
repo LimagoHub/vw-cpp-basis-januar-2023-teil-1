@@ -47,7 +47,9 @@ namespace vw
 
 			T get() const override
 			{
-				return T{};
+				if(is_empty())return T{};
+				
+				return akt->data;
 			}
 			bool remove() override // Bitte nicht
 			{
@@ -55,11 +57,15 @@ namespace vw
 			}
 			bool move_next() override
 			{
-				return false;
+				if (is_end_of_list()) return false;
+				akt = akt->nach;
+				return true;
 			}
 			bool move_previous() override
 			{
-				return false;
+				if (is_begin_of_list()) return false;
+				akt = akt->vor.lock();
+				return true;
 			}
 			bool move_first() override
 			{
@@ -69,15 +75,15 @@ namespace vw
 			{
 				return false;
 			}
-			bool is_empty() override
+			bool is_empty() const override
 			{
 				return start.use_count()==0;
 			}
-			bool is_end_of_list() override
+			bool is_end_of_list() const override
 			{
 				return is_empty() || akt->nach.use_count() == 0;
 			}
-			bool is_begin_of_list() override
+			bool is_begin_of_list() const override
 			{
 				return akt == start;
 			}
