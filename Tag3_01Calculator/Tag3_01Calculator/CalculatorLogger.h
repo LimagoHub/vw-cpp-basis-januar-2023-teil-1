@@ -3,25 +3,26 @@
 #include "Calculator.h"
 class CalculatorLogger:public Calculator
 {
+
+	friend class CalculatorFactory;
 private:
-	Calculator& calc;
-
-
-public:
-	CalculatorLogger(Calculator& calc)
-		: calc(calc)
+	std::unique_ptr<Calculator> calculator;
+	CalculatorLogger(std::unique_ptr<Calculator> calculator) : calculator(std::move(calculator))// Konstruktor Injection
 	{
 	}
+
+public:
+	
 
 
 	double add(double a, double b) const override
 	{
 		std::cout << "Add wurde gerufen" << std::endl;
-		return calc.add(a, b);
+		return calculator->add(a, b);
 	}
 	double sub(double a, double b) const override
 	{
-		return calc.sub(a, b);
+		return calculator->sub(a, b);
 	}
 };
 

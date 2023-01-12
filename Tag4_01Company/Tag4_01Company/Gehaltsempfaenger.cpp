@@ -1,0 +1,1 @@
+#include "Gehaltsempfaenger.h"

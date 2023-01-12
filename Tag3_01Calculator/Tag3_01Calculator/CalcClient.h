@@ -1,21 +1,22 @@
 #pragma once
+#include <memory>
 #include "Calculator.h" // Interface = Contract
 class CalcClient
 {
 private:
-	Calculator& calculator;
+	std::unique_ptr<Calculator> calculator_;
 public:
 
 
-	CalcClient(Calculator& calculator)
-		: calculator(calculator)
+	CalcClient(std::unique_ptr<Calculator> calculator)
 	{
+		calculator_ = std::move(calculator);
 	}
 
 	void go()
 	{
 		
-		std::cout << calculator.add(3, 4) << std::endl;
+		std::cout << calculator_->add(3, 4) << std::endl;
 	}
 };
 

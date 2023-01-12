@@ -2,18 +2,20 @@
 //
 
 #include <iostream>
-#include "CalculatorSecurity.h"
-#include "CalculatorLogger.h"
-#include "CalculatorImpl.h"
+#include "Calculator.h"
+#include "CalculatorFactory.h"
+
 
 
 #include "CalcClient.h"
 int main()
 {
-	CalculatorImpl calc;
-	CalculatorLogger logger{calc};
-	CalculatorSecurity security{ logger };
-	CalcClient client{security};
+	CalculatorFactory::set_logger(true);
+	CalculatorFactory::set_secured(true);
+	
+	
+	
+	CalcClient client{ CalculatorFactory::createInstance() };
 	client.go();
 }
 

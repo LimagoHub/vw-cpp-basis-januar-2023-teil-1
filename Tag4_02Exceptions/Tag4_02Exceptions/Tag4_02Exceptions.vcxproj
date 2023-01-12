@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{5746fdcc-d815-4245-86dd-0b5c7a98b726}</ProjectGuid>
-    <RootNamespace>Tag301Calculator</RootNamespace>
+    <ProjectGuid>{0bd9ba00-6b53-4ec1-8f40-c30946d01b0a}</ProjectGuid>
+    <RootNamespace>Tag402Exceptions</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,20 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CalcClient.cpp" />
-    <ClCompile Include="CalculatorFactory.cpp" />
-    <ClCompile Include="CalculatorImpl.cpp" />
-    <ClCompile Include="CalculatorLogger.cpp" />
-    <ClCompile Include="CalculatorSecurity.cpp" />
-    <ClCompile Include="Tag3_01Calculator.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="CalcClient.h" />
-    <ClInclude Include="Calculator.h" />
-    <ClInclude Include="CalculatorFactory.h" />
-    <ClInclude Include="CalculatorImpl.h" />
-    <ClInclude Include="CalculatorLogger.h" />
-    <ClInclude Include="CalculatorSecurity.h" />
+    <ClCompile Include="Tag4_02Exceptions.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

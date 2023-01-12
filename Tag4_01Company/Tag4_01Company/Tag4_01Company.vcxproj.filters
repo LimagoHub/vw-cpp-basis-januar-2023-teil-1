@@ -13,50 +13,29 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Headerdateien\math">
-      <UniqueIdentifier>{3a97fbec-cf94-40fe-8fc5-fc16ac1205de}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Quelldateien\math">
-      <UniqueIdentifier>{efa7a300-6e99-4ba2-967a-e05ed326f961}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Tag3_01Calculator.cpp">
+    <ClCompile Include="Tag4_01Company.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="CalcClient.cpp">
+    <ClCompile Include="Mitarbeiter.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="CalculatorImpl.cpp">
-      <Filter>Quelldateien\math</Filter>
+    <ClCompile Include="Lohnempfaenger.cpp">
+      <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="CalculatorLogger.cpp">
-      <Filter>Quelldateien\math</Filter>
-    </ClCompile>
-    <ClCompile Include="CalculatorSecurity.cpp">
-      <Filter>Quelldateien\math</Filter>
-    </ClCompile>
-    <ClCompile Include="CalculatorFactory.cpp">
+    <ClCompile Include="Gehaltsempfaenger.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CalcClient.h">
+    <ClInclude Include="Mitarbeiter.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Calculator.h">
-      <Filter>Headerdateien\math</Filter>
+    <ClInclude Include="Lohnempfaenger.h">
+      <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="CalculatorImpl.h">
-      <Filter>Headerdateien\math</Filter>
-    </ClInclude>
-    <ClInclude Include="CalculatorLogger.h">
-      <Filter>Headerdateien\math</Filter>
-    </ClInclude>
-    <ClInclude Include="CalculatorSecurity.h">
-      <Filter>Headerdateien\math</Filter>
-    </ClInclude>
-    <ClInclude Include="CalculatorFactory.h">
+    <ClInclude Include="Gehaltsempfaenger.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

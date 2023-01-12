@@ -1,11 +1,41 @@
 #pragma once
 #include <memory>
 #include <iostream>
+#include <stdexcept>
+
+class StapelException : public std::exception
+{
+private:
+	int errorcode;
+	
+public:
+	StapelException()
+	{
+	}
+
+	StapelException(char const* _Message)
+		: exception(_Message)
+	{
+	}
+
+	StapelException(char const* _Message, int i)
+		: exception(_Message, i)
+	{
+	}
+
+	StapelException(exception const& _Other)
+		: exception(_Other)
+	{
+	}
+};
+
 class Stapel
 {
 	/*
 	 * Goldene Regel wenn es entweder einen ausprogrammierten Destruktor oder einen ausprogrammierten Zuweisungsoperator oder einen CopyCtor gibt müssen alle drei
 	 * programmiert werden
+	 * 
+	 * erweiterte Goldene Regel + Move Construktor + Move Zuweisung
 	 *
 	 * Alternative mit delete abschalten
 	 */
@@ -33,6 +63,19 @@ public:
 		init(other);
 	}
 
+	Stapel(Stapel &&other) // Moveconstruktor
+	{
+		data = other.data;
+		size = other.size;
+		index = other.index;
+		
+		other.data = nullptr;
+		other.size = 0;
+		other.index = 0;
+		
+	}
+
+
 	virtual ~Stapel();
 
 	Stapel& operator=(const Stapel &other)
@@ -44,6 +87,20 @@ public:
 		
 		return *this;
 	}
+	Stapel& operator=( Stapel&& other)
+	{
+		if(data)
+			delete data;
+		data = other.data;
+		size = other.size;
+		index = other.index;
+
+		other.data = nullptr;
+		other.size = 0;
+		other.index = 0;
+
+		return *this;
+	}
 
 	//Stapel& operator=(const Stapel& other) = delete;
 
@@ -51,7 +108,7 @@ public:
 
 	void push(int value);
 	int pop();
-	bool is_empty();
-	bool is_full();
+	bool is_empty() const noexcept;
+	bool is_full() const noexcept;
 };
 
