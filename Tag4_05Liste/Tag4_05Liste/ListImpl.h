@@ -54,9 +54,29 @@ namespace vw
 				
 				return akt->data;
 			}
-			bool remove() override // Bitte nicht
+			bool remove() override 
 			{
-				return false;
+				if(is_empty()) return false;
+
+				if(is_begin_of_list() && is_end_of_list())
+				{
+					start.reset();
+					akt.reset();
+				} else if (is_begin_of_list())
+				{
+					move_next();
+					start = akt;
+					start->vor.reset();
+				} else if(is_end_of_list()) {
+					move_previous();
+					akt->nach.reset();
+				} else
+				{
+					akt->nach->vor = akt->vor;
+					akt->vor.lock()->nach = akt->nach;
+					move_next();
+				}
+				return true;
 			}
 			
 			bool move_next() override

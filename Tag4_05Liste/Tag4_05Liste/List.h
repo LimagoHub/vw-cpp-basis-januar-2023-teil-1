@@ -33,6 +33,10 @@ namespace vw
 			// Navigationsmethode
 			virtual bool move_next() = 0;
 			virtual bool move_previous() = 0;
+			virtual void clear()
+			{
+				while (remove());
+			}
 			
 			virtual bool move_first() {  // default
 				if (is_empty()) return false;
