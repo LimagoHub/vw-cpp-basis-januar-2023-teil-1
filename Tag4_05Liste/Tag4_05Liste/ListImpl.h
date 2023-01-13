@@ -32,7 +32,7 @@ namespace vw
 					start =  neu;
 				} else
 				{
-					move_last();
+					this->move_last();
 					akt->nach = neu;
 					neu->vor = akt;
 				}
@@ -42,12 +42,15 @@ namespace vw
 
 			bool update(T newValue) const override
 			{
-				return false;
+				if(is_empty())
+					return false;
+				akt->data = newValue;
+				return true;
 			}
 
 			T get() const override
 			{
-				if(is_empty())return T{};
+				if(is_empty())return T{};// exception ausloesen
 				
 				return akt->data;
 			}
@@ -55,26 +58,21 @@ namespace vw
 			{
 				return false;
 			}
+			
 			bool move_next() override
 			{
 				if (is_end_of_list()) return false;
 				akt = akt->nach;
 				return true;
 			}
+			
 			bool move_previous() override
 			{
 				if (is_begin_of_list()) return false;
 				akt = akt->vor.lock();
 				return true;
 			}
-			bool move_first() override
-			{
-				return false;
-			}
-			bool move_last() override
-			{
-				return false;
-			}
+			
 			bool is_empty() const override
 			{
 				return start.use_count()==0;

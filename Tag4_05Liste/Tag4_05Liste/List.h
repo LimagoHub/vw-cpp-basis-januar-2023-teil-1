@@ -33,9 +33,18 @@ namespace vw
 			// Navigationsmethode
 			virtual bool move_next() = 0;
 			virtual bool move_previous() = 0;
-			virtual bool move_first() = 0;
-			virtual bool move_last() = 0;
-
+			
+			virtual bool move_first() {  // default
+				if (is_empty()) return false;
+				while (move_previous());
+				return true;
+			}
+			
+			virtual bool move_last() {
+				if (is_empty()) return false;
+				while (move_next());
+				return true;
+			}
 			// Status
 			virtual bool is_empty() const = 0;
 			virtual bool is_end_of_list() const = 0; // wenn cursor AUF dem letzeten Element steht ODER die Liste leer ist
