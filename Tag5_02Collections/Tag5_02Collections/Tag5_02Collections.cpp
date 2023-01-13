@@ -4,57 +4,85 @@
 #include <iostream>
 #include <vector>
 #include <deque>
+#include <unordered_set>
+
+struct schwein
+{
+	std::string name;
+	int gewicht;
+
+
+	friend std::ostream& operator<<(std::ostream& os, const schwein& obj)
+	{
+		return os
+			<< "name: " << obj.name
+			<< " gewicht: " << obj.gewicht;
+	}
+
+	
+};
+
+class WonderFkt
+{
+private:
+	int counter{ 0 };
+public:
+	void operator()()  {
+		counter++;
+	}
+
+	int get_counter() const
+	{
+		return counter;
+	}
+};
+
+class PigEqual {
+public:
+	bool operator()(const schwein& s1, const schwein& s2) const {
+		return s1.name == s2.name && s1.gewicht == s2.gewicht;
+	}
+};
+
+struct PigHash {
+public:
+	size_t operator()(const schwein& s) const {
+
+		return std::hash<int>()(s.gewicht) + std::hash<std::string>()(s.name);
+	}
+};
+
 int main()
 {
 
-	std::vector<int> intVector;
-	intVector.reserve(10);
-
-	std::cout << "Capazitaet: " << intVector.capacity() << std::endl;
-
 	
-	for (int i = 0; i < 5; ++i)
+	
+	std::unordered_set<std::string> stringSet;
+
+	stringSet.insert("eins");
+	stringSet.insert("zwei");
+	stringSet.insert("drei");
+	stringSet.insert("eins");
+	stringSet.insert("vier");
+
+	for (auto& s : stringSet)
 	{
-		intVector.push_back(i * 10);
+		std::cout << s << std::endl;
+
 	}
+	std::unordered_set <schwein, PigHash, PigEqual> schweinSet;
 
-	std::cout << "Capazitaet: " << intVector.capacity() << std::endl;
-	
-	for (auto element : intVector)
-		std::cout << element << std::endl;
+	schweinSet.insert(schwein{ "piggy", 10 });
+	schweinSet.insert(schwein{ "babe", 10 });
+	schweinSet.insert(schwein{ "piggy", 10 });
+	schweinSet.insert(schwein{ "rudi", 15 });
+	schweinSet.insert(schwein{ "noch ein schwein", 10 });
 
-	for (auto &element : intVector)
-		element++;
-
-	for (auto element : intVector)
-		std::cout << element << std::endl;
-
-	int letzterWert = intVector.back();
-
-	std::cout << "Capazitaet: " << intVector.capacity() << std::endl;
-	std::cout << "Size: " << intVector.size() << std::endl;
-	intVector.pop_back();
-	std::cout << "Capazitaet: " << intVector.capacity() << std::endl;
-	std::cout << "Size: " << intVector.size() << std::endl;
-	
-	for (auto element : intVector)
-		std::cout << element << std::endl;
-
-
-	std::cout << letzterWert << std::endl;
-
-	std::cout << "--------------------"<< std::endl;
-
-	std::deque<int> intQueue;
-
-	for (int i = 0; i < 5; ++i)
+	for (auto& s : schweinSet)
 	{
-		intQueue.push_front(i * 10);
+		std::cout << s << std::endl;
+
 	}
-
-	for (auto element : intQueue)
-		std::cout << element << std::endl;
-
 	
 }
 
